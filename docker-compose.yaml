@@ -1,0 +1,37 @@
+version: '3.2'
+
+services:
+  elixirsoftware:
+    build:
+      context: .
+      dockerfile: Dockerfile.local
+    environment: 
+      - GOOGLE_APPLICATION_CREDENTIALS=/opt/key.json
+      - DB_HOST=localhost
+      - DB_USER=master
+      - DB_PASS=example
+      - DB_NAME=mockdb
+      - DB_PORT=5678
+    volumes: 
+      - ./:/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - "databaselocal"
+      - "sftp"
+
+  databaselocal:
+    image: postgres:12
+    restart: always
+    environment:
+      POSTGRES_DB: mockdb
+      POSTGRES_USER: master
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5678:5432
+
+  sftp:
+    image: atmoz/sftp
+    ports:
+        - "2222:22"
+    command: foo:123:1001::upload
