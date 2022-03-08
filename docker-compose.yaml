@@ -7,11 +7,11 @@ services:
       dockerfile: Dockerfile.local
     environment: 
       - GOOGLE_APPLICATION_CREDENTIALS=/opt/key.json
-      - DB_HOST=localhost
+      - DB_HOST=databaselocal
       - DB_USER=master
       - DB_PASS=example
       - DB_NAME=mockdb
-      - DB_PORT=5678
+      - DB_PORT=5432
     volumes: 
       - ./:/app
     ports:

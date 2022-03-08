@@ -6,10 +6,11 @@ use Mix.Config
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
 config :projeto_docker, ProjetoDocker.Repo,
-  username: "postgres",
-  password: "postgres",
-  database: "projeto_docker_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "localhost",
+  username: System.get_env("DB_USER", "master"),
+  password: System.get_env("DB_PASS", "example"),
+  database: System.get_env("DB_NAME", "mockdb"),
+  port: System.get_env("DB_PORT", "5678"),
+  hostname: System.get_env("DB_HOST", "localhost"),
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
@@ -20,3 +21,8 @@ config :projeto_docker, ProjetoDockerWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+System.put_env("SFTP_HOST", "localhost")
+System.put_env("SFTP_PORT", "2222")
+System.put_env("SFTP_USER", "foo")
+System.put_env("SFTP_PASS", "123")

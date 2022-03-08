@@ -5,8 +5,8 @@ config :projeto_docker, ProjetoDocker.Repo,
   username: System.get_env("DB_USER"),
   password: System.get_env("DB_PASS"),
   database: System.get_env("DB_NAME"),
-  port: System.get_env("DB_PORT"),
-  hostname: "databaselocal",
+  port: System.get_env("DB_PORT", "5432"),
+  hostname: System.get_env("DB_HOST"),
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
