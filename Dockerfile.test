@@ -1,6 +1,6 @@
 FROM elixir:1.13.3-slim
 
-ENV MIX_ENV=local
+ENV MIX_ENV=test
 
 RUN apt-get update
 RUN apt-get install -y inotify-tools
