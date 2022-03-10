@@ -1,5 +1,9 @@
 # ProjetoDocker
 
+Este projeto serve como exemplo para utilizar docker e docker-compose para subir projetos que possam ser testados e desenvolvidos sem dependência de aplicações externas.
+
+# Documentação padrão do Phoenix
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
